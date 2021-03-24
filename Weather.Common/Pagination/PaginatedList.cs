@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Weather.Common
+namespace Weather.Common.Pagination
 {
     public class PaginatedList<T>
         where T : class
