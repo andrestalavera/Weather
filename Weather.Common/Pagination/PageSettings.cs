@@ -1,4 +1,4 @@
-namespace Weather.Common
+namespace Weather.Common.Pagination
 {
     public static class PageSettings
     {
