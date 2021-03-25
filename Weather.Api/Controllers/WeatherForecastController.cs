@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Weather.Common.Pagination;
 using Weather.Models;
 
 namespace Weather.Api.Controllers
@@ -25,16 +26,22 @@ namespace Weather.Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public PaginatedList<WeatherForecast> Get(int page = PageSettings.DEFAULT_PAGE_NUMBER, int size = PageSettings.DEFAULT_PAGE_SIZE)
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var items = Enumerable.Range(10, 50).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            });
+            return new PaginatedList<WeatherForecast>
+            {
+                Page = page,
+                Size = size,
+                Total = items.Count(),
+                Items = items
+            };
         }
     }
 }
