@@ -6,11 +6,14 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Weather.Models\Weather.Models.csproj" />
     <ProjectReference Include="..\Weather.Common\Weather.Common.csproj" />
+    <ProjectReference Include="..\Weather.Data\Weather.Data.csproj" />
   </ItemGroup>
 
 </Project>
